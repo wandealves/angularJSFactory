@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="serviceApp">
+    <head>
+        <title>Service AngularJS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-controller="MainCtrl as mainCtrl">
+        <h1>Controlador Principal</h1>
+        <button ng-click="mainCtrl.open('firsttab')">Abrir primeira Aba</button>
+        <button ng-click="mainCtrl.open('secondtab')">Abrir segunda Aba</button>
+
+        <div ng-switch on="mainCtrl.tab">
+            <div ng-switch-when="firsttab">
+                <div ng-controller="SubCtrl as ctrl">
+                    <h3>Primeira Aba</h3>
+                    <ul>
+                        <li ng-repeat="item in ctrl.list()">
+                            <span ng-bind="item.label"></span>
+                        </li>
+                    </ul>
+
+                    <button ng-click="ctrl.add()">Adicionar novo item</button>
+                </div>
+            </div>
+
+            <div ng-switch-when="secondtab">
+                <div ng-controller="SubCtrl as ctrl">
+                    <h3>Segunda Aba</h3>
+                    <ul>
+                        <li ng-repeat="item in ctrl.list()">
+                            <span ng-bind="item.label"></span>
+                        </li>
+                    </ul>
+
+                    <button ng-click="ctrl.add()">Adicionar novo item</button>
+                </div>
+            </div>
+        </div>
+        <script src="js/angular.min.js" type="text/javascript"></script>
+        <script src="js/app/app.js" type="text/javascript"></script>
+        <script src="js/controller/controller.js" type="text/javascript"></script>
+        <script src="js/service/service.js" type="text/javascript"></script>
+    </body>
+</html>
